@@ -1,0 +1,54 @@
+** CREATE DASHBOARD :- main steps
+         1. Create Layout :- /src
+                                /components
+                                    Sidebar.js
+                                    Header.js
+                                    MainContent.js
+                                /pages
+                                    Dashboard.js
+                                    Profile.js
+                                App.js
+        2. Create SideBar.
+        3. Create Header.
+        4. Create Main Content Area 
+        5. Navigation
+
+PROCESS :--
+
+  1. After creating folder according to the context.
+
+  2. Create a SideBar :- 
+
+    1. create functional or arrayfuntion of SideBar and import 
+
+      * DRAWER :- used for side navbar siding panel for navigation. 
+         variant for making it display permanent, anchor for making it display left side.
+      * List :- for adding group of list items.
+      * ListItembutton :- list item button for making clickable like button.
+      * ListItemText :-list the names of the items mention in the Lists.
+
+   3. Creating Header :-
+        
+        1. create functional or arrayfuntion of Header and import.
+
+           * APPBAR:-provide top navigation bar.
+           * ToolBar:- provide structure for better  content alignment.
+
+    4.  Create a mainComp :- 
+
+        1. create functional or arrayfuntion of MainComp.
+    
+    5. Add comp to App.js:-
+
+      1. create functional or arrayfuntion of Header and import.
+        Box:- it's acts as a wrapper or container elements, easy to apply styling.
+        
+        CSSBASELINE:- it is mui comp used to provide the default styling to the app by importing.
+          ** it Normalises the browsers styling and make your app look same across browsers. means:- browsers have default styling depend upon there own styling this will normalise that browsers styling and make appear same in every browser 
+    
+******  if there is a promblem go to the roots by applying starting operation like this router promblem:-
+           
+            is button clicking corectly, after that navigating is right or wrong if everything is right then output is not coming means everthing is okk but the output is not coming because in layout navigating can be done but to for to render that route we need Outlet this will render the nav Output .
+
+            So, go to the roots of the promblem and solve it i
+

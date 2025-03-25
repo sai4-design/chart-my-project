@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.Inpt_fild {
+    background-color: #4eb6e4;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.Inpt_fild .row label{
+    color: black;
+}
+.field{
+    color: black;
+    background-color: #ecf7fc
+}
+
+.Inpt_fild Button{
+    height: 55px;
+    color: white;
+    border: 3px solid white;
+}
+.Info{
+    width: 100%;
+    height: 450px;
+}
+.Ta_ch {
+    display: flex;
+    align-items: anchor-center;
+    gap: 35px;
+}
+.table_cvr {
+    margin-top: -200px;
+}
+
+h1, p{
+    display: block;
+    text-align: center;
+}
+.recharts-legend-wrapper {
+    margin-top: 90px;
+    font-size: 20px;
+}
+svg.recharts-surface {
+    width: 20px;
+    padding: 0px;
+}
+.tabl Button {
+    width: 80px;
+    margin: 0px;
+    padding: 4px;
+}
+.css-yvbtxc-MuiTableCell-root{
+    padding: 0px !important;
+}
+

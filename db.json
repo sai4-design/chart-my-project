@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1978",
+      "firstName": "d",
+      "lastName": "s",
+      "participation": "88"
+    },
+    {
+      "id": "9a30",
+      "firstName": "su",
+      "lastName": "man",
+      "participation": "89"
+    },
+    {
+      "id": "6652",
+      "firstName": "s",
+      "lastName": "f",
+      "participation": "99"
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+steps:-
+
+1.  install MUI and bootstrap make sure to import correctly.
+
+2.  create a structure for your page with header,section, use div with combination of elements(using in it) and classname.
+
+3.  create input fields.
+        promblem I got:-
+            1. by using MUI changing the structure or color of their elements.
+            ans:- if it a button  use ".Inpt_fild button" its a labe ".Inpt_fild .row label" use every class in css until u got the element you want to change.
+
+4. create tables use:-  
+        table container holds every part of table, table head contains data titles, table row contains data in 'table body' and titles in 'table head', table row contains individual cell in row, table body contains row cells which used to iterate data that's it.
+        promblems I got :-
+            1. by using index(determine the element position starting with '0') for showing the s.no of data is good practice.
+
+            2.   <TableRow key={row.id}> use only  row or can i use any thing but in what bases i should decide.
+                1. row in this context  is just a variable name represent individual item in the array.
+                2. you can use anything but it should has a meaning that reflects data.
+
+            3. use sx={{tableLayout:"fixed"}} this for get respect for your given width or attributes because table html wii defaulty adjust according to it length.
+
+            4. so s.no taken space due to align='center' where S.no may get the padding for 1 is more then the firstName right or wrong.
+
+5. CREATE THE PIE-CHART :-
+        Pie chart is main component in chart and pie contains data( of array or obj), cx and cy to produce chart in middle of container. Outer radius for chart to display with certain radius. Datakey to slice pie chart according to data values. Cell define colors. Toolkit to show its value when hover. Legend represent it color 
+        Promblem I got:-
+           1. index is used to give every element a specific identity use carfully.
+
+           2. fill={COLORS[index%COLORS.length]} fill to color of the sliced part for diff color and here (%) is used to give the color for the element if there more than given color. 0%3,1%3,2%3 here if 1 divided by 3 where if smaller num is divided by bigger num the remainder is smaller num 1%3 is 1, 2%3 is 2, 3%3 is 0, 4%3 is 1.
+
+           3. If you want to change any styling do in inspect by checking from the root of the promblem.
+                ex:-  group A i want it horizontal it contains div,ul ,li, span, img if you have trouble in that img inspect and try to change that img properties don't try to change with combine with ul or li or any outer parent.   **!imporatnt**
+
+           4. ENTRY and INDEX:-
+              map is to iterate over each element. so without element variable in map(entry) map iterate over datachart data but cant have access to the data and cant render the data( react cant understand what or where to render). and index used for filling the color using condition but without element variable in map it cant render colors or data. **!imPORTANT**
+              
+
+
+6. WRITE FUNCTIONALITY:-
+     INPUT FIELDS:-
+
+        1. name is initial, setName is to update name.If the input value updated onchange function trigger (e) and set value to setName help of    "e.target.value" this will upadte value means name. 
+
+        2. use 'HandleSubmit' function to submit form by preventing default re-loads and print firstName in console.log, use type submit in button.
+
+        3. MULTIPLE INPUTS:- so handle change used for multiple input handling by use of name attribute. when change happen dynamically it trigger handle change update value by creating copy (...values) of values in object and  update specific input field by checking [name] and it updated value it added to copy of values and than updated to in setInputs. 
+
+     TABLE :- To take the submited values for creating tables.
+
+        1. For getting values from the input(personname) should take from submit.
+          Method: 
+            1. Create useState for storing and tracking the table values and to update also.Use update fuction of table(setTable) store values of inputs by creating copy of tables and add the inputvalues by creating object { firstName : input.FirstName, la..} of the input values and add to "...values" update the "setTable(tableData)".
+            2. After creating that clear the object values to "" .
+            3. use map to iterate over every array object to render the values by accessing keys.
+            
+        2. ** In map Elements are diff Objects Contained in an array(if we type the inputs and send than one object created, than again type send 2 object created in this way). so for rendering the properties of object(elements) we use "{person.firstName}" person is element(object) and firstName is key in element which as the value of input.FirstName with help of this
+
+             setTable([...tableData,{
+                firstName (KEY)    : personname.FirstName,(VALUE)
+                (lastName      : personname.LastName),(PROPERTY)
+                participation : personname.Participation
+            }]);
+
+         3. FOR BORDERS
+            1. ** Grid containers enable more complex layouts by defining a structure of rows and columns.
+            gridTemplateRows : 'auto 1fr': This property defines the layout of the rows in the grid.
+            auto : allows 1 row adjust size auto according to the content.
+            1fr : 2 row takes remaining avalable place in the grid.
+
+            2.   <TableRow sx={{border:'2px solid'}}> for row borders
+            3.    sx={{borderRight:'2px solid'}} for right side borders because border only cover in rectangle not inside
+            4. minWidth:"50px" maintain min 50px width and doesnt shrink.
+            5. wordBreak:'break-word' break the content by words in cells if its over size than the cell.
+
+     PIE CHART :- To take the submited values for creating pie chart.
+        
+        1. Create usestate for storing and tracking input values.
+
+        2. same as tables store and update setChartData by adding spread operator and object.
+
+        3. use template literals to combine name  `${personname.FirstName} ${personname.LastName}`, for combining both values.
+        
+        4. map is to iterate over each element. so without element variable in map(entry) iterate over datachart 'data' but cant have access to the data and cant render the data( react cant understand what or where to render). and index used for filling the color using condition but without element variable in map it cant render colors or data.
+
+7. Data storing in API in JSON format .
+     
+     JSON:-
+           1. JSON is a Data Format used for send and recieve data b/w client(browser) and server.
+           2. For web application to server submitted data transfrom to string by (JSON.stringify) for 
+               better transition on network with a standard format for easy transfer.
+              For server to web application receive data it tranfrom string to javaScript Object by (JSON.Parse) for
+               computer proceesing.
+           3. It is lightweight and efficient for web application.
+
+      API:-
+            1. API is a INTERFACE used for communicating B/w clients(browser) and servers or database.
+            2. It is used for manipulating the data by getting ,posting and converting.
+            
+            process:- api recieves data in Json string convert js object to understand it and sends to server or database for stroring data (in sql its binary format,mangoDb often in document resembles JSON)    
+
+   PROCESS:- use async method for keyword in JS for declaring asynchronous operations which can perform fetching data without being blocked, sood with error handling.
+
+     1. use if statement for checking the submitted data is not empty for objects personname.Firstname.trim() !=='' and for arrays tabledata.length !== 0 is not empty.
+     2. try and catch method for better error handling.
+     3. post the Dta with help of if and try method by using fetching the api endpoint with the variable "response".await key used in ansyc for waiting until the process is done.
+     4. use " body" to post the Data in string format for transition on network with the key value pairs using the state as value and its name as keys.
+     5. if response not ok throw error if(!response.ok)
+     6. after response convert string into js object by "response.json()" using await for wait until processcomplete assign an 'Data' variable is its ok show data in console or isf error show it .
+
+8.  code id decided by the database peoples how they stored the data inside server or data methods 
+  1. arrays of objects
+  2. objects inside objects  
+
+9. *learn about params .
+   *[id ] when id changed data feteched again right so if data id value is changed and submitted the value automatically change in ui page and it will reload due to [id] and again fetch data and show
+
+10. routing can be done without layout( this only render the components inside them in header ) if I want to only navigate than no need of layout just wrap the route inside Routes with using UseNavigation method.
+
+   Navigation:- use with the router to change the url of the app and than router define the route where to navigate.
+
+   useParams:-The data passed in the form of the URL (e.g., /users/:id) is called dynamic parameters.
+   we use useParams() to fetch that parameter (e.g., id) in your component and use it to make decisions (e.g., fetching user data via an API).
+
+11. what to use in useState(null or []) for storing
+
+      1. null is used when you don't know what value will be coming or when the value is not yet available (e.g., before fetching data from an API).
+      2. [] (empty array) is used when you expect the value to be an array (e.g., when fetching multiple items from an API).  
+
+
+      YOU CREATED OBJECT STATE WHICH HOLDS ON OBJECT PASS ON OBJECTS STORES ONE OBJECT, SO MAKE IT ARRAY OF OBJECTS LIKE ([{}]) FOR MORE INPUT TO CONSIDER BRO, AND STORE IT YOU HAVE TO CHANGE MANY THINGS BECAUSE NOW YOU CREATED AN ARRAY THING ABOUT IT AND LINE TO LINE AND CHANGE IT .
+
+
+12.   localStorage.setItem("storeddata", JSON.stringify({ name:personname, table: updatedtable, chart: chartcalc }));
+      console.log("Saved to localStorage");  
+
+
+13. Api STORING:-
+
+    1. create db file with .josn for creating object.
+    2. install json server for by npm.
+    3. run command json-server --watch db.json --port 5000 watch to watch the changes port to display on that server
+    4. create file and post the data by using ansyn operation.
+
+14. if (storedperson) checks whether the variable storedperson has a truthy value (e.g., it's not null, undefined, false, 0, or an empty string). If it has a value, the condition is true, and the block inside the if statement runs.
+
+
+15.  storing values in api only store the values which gives the output like inputs  {
+      "id": "7a81",
+      "firstName": "sai",
+      "lastName": "kumar",
+      "participation": "66"
+    },    dont wrap around another ojects
+
+16. (users.filter(user => user.id !== id));  vs   (users.filter((user) => ({user.id !== id})));
+
+   1. user is a callback function expects a boolen value to keep or delete the value through filter to create new array which is first one .
+   2. but in 2 instead of return boolan it return object due to {}.
+   3. {} cant be used around return statement until and unless it provide a block of code with return statement.
+   4. The filter function needs to return true or false, not an object.
+
+17. to store values in api 
+    1. create .json file
+    2. install json server 'npm install -g json-server'
+    3. start server 'json-server --watch db.json'
+     PROBLEMS I GOT:-
+       1. always start the server first and than start npm start and lauch.
+       2. if any promblem occur close everything and start from start not code starting server, storing and everything.
+
+18. [name]:value what is [name] here:-so [name] is not array used to update the value of the [name](is variable) variable. it is used to change value dynamically where it representing as key in object . due to dynamic key.
+
+  dynamic key is a way to use a variable as the key for an object in JavaScript. Instead of hardcoding the key, you write it in square brackets ([ ])
+  ex  let key = "name";
+      let obj = { [key]: "Alice" };
+
+19. ROUTING THE SPECIFIC DATA FROM ON PAGE TO ANOTHER PAGE
+
+         USEPARAMS:- store the data which is extracted by router(':id' extract from url('/update/${id})) and given to params by router and params give it to component as parameter.
+
+
+20. store values correctly TO GET ACCESS:-
+
+      setUsers({
+                FirstName: Data.firstName,
+                LastName:  Data.lastName,
+                Participation:  Data.participation,
+              })  THIS WAY stored the data to get acces from another page in update page
+
+     1. JSON.Parse and response.json() same how
+        response.json inbuild in fetch works as JSON.parse() to make response onj right

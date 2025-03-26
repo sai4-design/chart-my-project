@@ -52,22 +52,31 @@ if(!users){
             Loading...
           </div>
 }
-const HandleDelete = async(id) => {
-    try{
-     const response = await fetch(`http://localhost:3000/users/${id}`,{
-        method:'DELETE',
-        'Content-Type':'application/json'
-     })
-     if(response.ok){
-           alert('you are deleting id no:' + id)
-           setUsers(users.filter((user) => user.id !== id))
-           console.log(`id: ${id} had been deleted`)
-     }
-    }catch (error) {
-      console.error('Error fetching or updating user data:', error);
-  }
-    
-  }
+const HandleDelete = async (id) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete the user with ID: ${id}?`);
+  
+    if (!confirmDelete) {
+      // If the user clicks "Cancel", simply return and do nothing
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:3000/users/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+        alert(`You have successfully deleted the user with ID: ${id}`);
+        setUsers(users.filter((user) => user.id !== id));
+        console.log(`ID: ${id} has been deleted`);
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
     const HandleUPDtpage = (id) => { // users must because its parameter getting argument of user.id
         console.log('user num got update',id)
